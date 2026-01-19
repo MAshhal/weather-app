@@ -1,0 +1,17 @@
+{
+  "name": "mystic/weather-app",
+  "description": "A simple weather application built as first project in PHP",
+  "require": {
+    "guzzlehttp/guzzle": "^7.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mystic\\WeatherApp\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Muhammad Ashhal"
+    }
+  ]
+}
