@@ -52,10 +52,10 @@ class WeatherService
             'location' => $weatherData['location'],
             'data' => [
                 'temperature' => $weatherData['current']['temp_c'],
-                'feelsLike' => $weatherData['current']['feelslike_c'],
+                'feels_like' => $weatherData['current']['feelslike_c'],
                 'condition' => $weatherData['current']['condition']['text'],
                 'humidity' => $weatherData['current']['humidity'],
-                'windDirection' => $weatherData['current']['wind_dir'],
+                'wind_direction' => $weatherData['current']['wind_dir'],
                 'last_updated' => $weatherData['current']['last_updated'],
                 'last_updated_epoch' => $weatherData['current']['last_updated_epoch'],
             ]
