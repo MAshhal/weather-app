@@ -13,19 +13,22 @@ $dotenv->load();
  */
 
 if ($argc < 2) {
-    echo "Usage: php weather.php <city>\n";
-    echo "Example: php weather.php Lahore\n";
+    echo "Usage: php weather.php <query>\n";
+    echo "Examples:\n";
+    echo "  php weather.php \"London\"\n";
+    echo "  php weather.php \"48.8567,2.3508\" (Latitude and Longitude)\n";
+    echo "  php weather.php \"90210\" (UK/US/Canada ZIP/Postcode)\n";
     exit(0);
 }
 
 $weatherService = WeatherService::create();
-$city = $argv[1];
+$query = $argv[1];
 
-echo "Getting weather for $city...\n";
-$weather = $weatherService->getCurrentWeather($city);
+echo "Getting weather for $query...\n";
+$weather = $weatherService->getCurrentWeather($query);
 
 if ($weather['status']['code'] != 200) {
-    echo "Error occurred while fetching weather for $city" . "\n";
+    echo "Error occurred while fetching weather for $query" . "\n";
     echo $weather['status']['message'] . "\n";
     exit(1);
 }
