@@ -41,14 +41,20 @@ class WeatherService
             ]);
         } catch (GuzzleException $e) {
             return [
-                'status' => $e->getCode(),
+                'status' => [
+                    'code' => $e->getCode(),
+                    'message' => $e->getMessage(),
+                ],
             ];
         }
 
         $weatherData = json_decode($response->getBody()->getContents(), true);
 
         return [
-            'status' => $response->getStatusCode(),
+            'status' => [
+                'code' => $response->getStatusCode(),
+                'message' => $response->getReasonPhrase(),
+            ],
             'location' => $weatherData['location'],
             'data' => [
                 'temperature' => $weatherData['current']['temp_c'],

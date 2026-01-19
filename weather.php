@@ -24,6 +24,12 @@ $city = $argv[1];
 echo "Getting weather for $city...\n";
 $weather = $weatherService->getCurrentWeather($city);
 
+if ($weather['status']['code'] != 200) {
+    echo "Error occurred while fetching weather for $city" . "\n";
+    echo $weather['status']['message'] . "\n";
+    exit(1);
+}
+
 $location = $weather['location'];
 $data = $weather['data'];
 
