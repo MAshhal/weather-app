@@ -43,7 +43,7 @@ foreach ($location as $key => $value) {
         'lon' => 'Longitude',
         'localtime' => 'Local Time',
         'localtime_epoch' => 'Local Time (Epoch seconds)',
-        default => ucwords($key)
+        default => ucwords(str_replace('_', ' ', $key))
     };
 
     $formatted_value = match ($key) {
@@ -51,11 +51,11 @@ foreach ($location as $key => $value) {
         default => $value
     };
 
-    echo " {$formatted_key} : {$formatted_value} \n";
+    printf(" %-30s : %s\n", $formatted_key, $formatted_value);
 }
 
 echo "\n";
-echo "Weather\n";
+echo "🌡  Weather\n";
 echo "-------\n";
 foreach ($data as $key => $value) {
     $formatted_key = match ($key) {
@@ -67,5 +67,5 @@ foreach ($data as $key => $value) {
         'humidity' => "{$value}%",
         default => $value
     };
-    echo " {$formatted_key} : {$formatted_value} \n";
+    printf(" %-30s : %s\n", $formatted_key, $formatted_value);
 }

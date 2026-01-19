@@ -42,7 +42,7 @@ class WeatherService
         } catch (GuzzleException $e) {
             return [
                 'status' => [
-                    'code' => $e->getCode(),
+                    'code' => $e->getCode() ?: 500,
                     'message' => $e->getMessage(),
                 ],
             ];
