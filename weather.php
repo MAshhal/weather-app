@@ -12,8 +12,14 @@ $dotenv->load();
  * Call code here
  */
 
+if ($argc < 2) {
+    echo "Usage: php weather.php <city>\n";
+    echo "Example: php weather.php Lahore\n";
+    exit(0);
+}
+
 $weatherService = WeatherService::create();
-$city = "Lahore";
+$city = $argv[1];
 
 echo "Getting weather for $city...\n";
 $weather = $weatherService->getCurrentWeather($city);
